@@ -23,7 +23,7 @@ namespace TicTacToe
             };
 
             await GetParticipants();
-            RevisarPartides();
+            await RevisarPartides();
             GuanyadorPerVictories();
         }
 
@@ -49,14 +49,14 @@ namespace TicTacToe
             
             if (Guanyadors.Count == 1)
             {
-                Console.WriteLine($"Guanyador: {Guanyadors[0]}");
+                Console.WriteLine($"Guanyador/a: {Guanyadors[0]} amb {victoriesguanyador} victories!");
             }
             else
             {
                 Console.WriteLine("Empat entre els següents jugadors:");
                 foreach (var guanyador in Guanyadors)
                 {
-                    Console.WriteLine(guanyador + " amb " + victoriesguanyador + " victories ");
+                    Console.WriteLine(guanyador + " amb " + victoriesguanyador + " victories");
                 }
             }
         }
@@ -64,7 +64,7 @@ namespace TicTacToe
 
         private static async Task RevisarPartides()
         {
-            for (int i = 10; i < 11; i++)
+            for (int i = 1; i < 10000; i++)
             {
                 var partida = await bdtictactoe.GetFromJsonAsync<Partida>($"/partida/{i}");
 
